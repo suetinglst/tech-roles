@@ -900,38 +900,52 @@ if (form) {
 
 // Handle Formspree AJAX submission
 window.addEventListener('DOMContentLoaded', function() {
-  const applyForm = document.getElementById('apply-form');
-  const successDiv = document.getElementById('form-success');
-  if (applyForm && successDiv) {
-    successDiv.style.display = 'none';
-    applyForm.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const btn = applyForm.querySelector('.submit-btn');
-      btn.textContent = 'Sending...';
-      btn.disabled = true;
-      const data = new FormData(applyForm);
-      try {
-        const res = await fetch(applyForm.action, {
-          method: 'POST',
-          body: data,
-          headers: { 'Accept': 'application/json' }
-        });
-        if (res.ok) {
-          applyForm.style.display = 'none';
-          successDiv.style.display = 'block';
-          successDiv.scrollIntoView({ behavior: 'smooth' });
-        } else {
-          btn.textContent = 'Send to ST →';
-          btn.disabled = false;
-          alert('Something went wrong. Please email ST directly at sueting.lim@roberthalf.jp');
-        }
-      } catch(err) {
+  var applyForm = document.getElementById('apply-form');
+  var successDiv = document.getElementById('form-success');
+  
+  if (!applyForm || !successDiv) {
+    console.log('Form or success div not found');
+    return;
+  }
+  
+  successDiv.style.display = 'none';
+  
+  applyForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    var btn = applyForm.querySelector('.submit-btn');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    
+    var data = new FormData(applyForm);
+    
+    fetch('https://formspree.io/f/meedqzld', {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(function(res) {
+      console.log('Response status:', res.status);
+      if (res.ok) {
+        applyForm.style.display = 'none';
+        successDiv.style.display = 'block';
+        successDiv.scrollIntoView({ behavior: 'smooth' });
+      } else {
         btn.textContent = 'Send to ST →';
         btn.disabled = false;
-        alert('Something went wrong. Please email ST directly at sueting.lim@roberthalf.jp');
+        alert('Something went wrong. Please email ST at sueting.lim@roberthalf.jp');
       }
+    })
+    .catch(function(err) {
+      console.log('Error:', err);
+      btn.textContent = 'Send to ST →';
+      btn.disabled = false;
+      alert('Something went wrong. Please email ST at sueting.lim@roberthalf.jp');
     });
-  }
+    
+    return false;
+  });
 });
 </script>
 </body>
