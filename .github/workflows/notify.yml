@@ -21,37 +21,25 @@ jobs:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: |
           python3 << 'PYEOF'
-          import os, re, json, urllib.request, subprocess
+          import os, re, subprocess
 
-          webhook_url = os.environ.get("DISCORD_WEBHOOK_URL", "")
-          print(f"Webhook URL length: {len(webhook_url)}")
-          print(f"Webhook URL starts with: {webhook_url[:40]}")
+          webhook_url = os.environ.get("DISCORD_WEBHOOK_URL", "").strip()
 
-          if not webhook_url:
-              print("ERROR: DISCORD_WEBHOOK_URL secret is empty!")
-              exit(1)
-
-          # Get the diff of index.html
+          # Get the diff
           diff = subprocess.getoutput("git diff HEAD~1 HEAD -- index.html")
-          print(f"Diff length: {len(diff)} chars")
 
-          # Detect new companies
+          # Detect changes
           new_companies = re.findall(r'^\+.*class="card-name"[^>]*>([^<]+)', diff, re.MULTILINE)
           new_companies = [c.replace("🔥 Urgent","").replace("NEW","").strip() for c in new_companies if c.strip()]
-
-          # Detect new roles
           new_roles = re.findall(r'^\+.*class="role-title"[^>]*>([^<]+)', diff, re.MULTILINE)
           new_salaries = re.findall(r'^\+.*class="role-salary"[^>]*>([^<]+)', diff, re.MULTILINE)
 
-          # Build message
           lines = ["📋 **ST's Job Portal has been updated!**", ""]
-
           if new_companies:
               lines.append("🆕 **New companies added:**")
               for c in new_companies[:5]:
                   lines.append(f"  • {c}")
               lines.append("")
-
           if new_roles:
               lines.append("💼 **New roles added:**")
               pairs = list(zip(new_roles, new_salaries)) if new_salaries else [(r, "") for r in new_roles]
@@ -59,33 +47,35 @@ jobs:
                   sal_str = f" | {salary}" if salary else ""
                   lines.append(f"  • {role}{sal_str}")
               lines.append("")
-
           if not new_companies and not new_roles:
               lines.append("✏️ Roles and company info have been updated.")
               lines.append("")
-
           lines.append("👉 **View all roles:** https://suetinglst.github.io/tech-roles/")
-          lines.append("")
           lines.append("📩 Interested? Submit your CV directly on the portal!")
 
           message = "\n".join(lines)
-          print(f"Message to send:\n{message}")
 
-          # Send to Discord
-          payload = json.dumps({"content": message, "username": "ST Job Alerts"}).encode("utf-8")
-          req = urllib.request.Request(
-              webhook_url.strip(),
-              data=payload,
-              headers={"Content-Type": "application/json"},
-              method="POST"
-          )
-          try:
-              resp = urllib.request.urlopen(req)
-              print(f"✅ Discord notified! Status: {resp.status}")
-          except urllib.error.HTTPError as e:
-              body = e.read().decode()
-              print(f"❌ HTTP Error {e.code}: {e.reason}")
-              print(f"Response body: {body}")
-          except Exception as e:
-              print(f"❌ Failed: {e}")
+          # Use curl instead of Python urllib
+          import json
+          payload = json.dumps({"content": message, "username": "ST Job Alerts"})
+          
+          result = subprocess.run([
+              "curl", "-s", "-o", "/tmp/discord_response.txt", "-w", "%{http_code}",
+              "-X", "POST",
+              "-H", "Content-Type: application/json",
+              "-d", payload,
+              webhook_url
+          ], capture_output=True, text=True)
+          
+          http_code = result.stdout.strip()
+          with open("/tmp/discord_response.txt") as f:
+              response_body = f.read()
+          
+          print(f"HTTP Status: {http_code}")
+          print(f"Response: {response_body}")
+          
+          if http_code in ["200", "204"]:
+              print("✅ Discord notified successfully!")
+          else:
+              print(f"❌ Failed with status {http_code}")
           PYEOF
