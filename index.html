@@ -102,7 +102,7 @@
   .form-group input[type="file"] { padding: 6px; background: #fff; }
   .submit-btn { background: #1a1a1a; color: #fff; border: none; border-radius: 10px; padding: 12px 24px; font-size: 14px; font-weight: 600; cursor: pointer; align-self: flex-start; transition: background 0.15s; font-family: inherit; }
   .submit-btn:hover { background: #333; }
-  .form-success { display: none; text-align: center; padding: 2rem; font-size: 15px; color: #1a6644; font-weight: 500; }
+  .form-success { text-align: center; padding: 2rem; font-size: 15px; color: #1a6644; font-weight: 500; }
   @media (max-width: 640px) {
     .apply-section { margin: 2rem 1rem 0; }
     .form-row { grid-template-columns: 1fr; }
@@ -839,7 +839,7 @@
 <input accept=".pdf,.doc,.docx" name="cv" required="" type="file"/>
 </div>
 <button class="submit-btn" type="submit">Send to ST →</button>
-<div class="form-success" id="form-success" style="display:none">
+<div class="form-success" id="form-success">
       ✅ Thank you! ST will review your CV and be in touch within 2 business days.
     </div>
 </form>
@@ -910,7 +910,7 @@ window.addEventListener('DOMContentLoaded', function() {
       console.log('Response status:', res.status);
       if (res.ok) {
         applyForm.style.display = 'none';
-        successDiv.style.cssText = 'display:block !important; padding:2rem; text-align:center; font-size:16px; font-weight:600; color:#1a6644; background:#e6f4ee; border-radius:12px; margin-top:1rem;';
+        successDiv.style.display = 'block';
         successDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
       } else {
         btn.textContent = 'Send to ST →';
