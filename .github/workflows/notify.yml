@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 2
 
@@ -23,15 +23,21 @@ jobs:
           python3 << 'PYEOF'
           import os, re, json, urllib.request, subprocess
 
+          webhook_url = os.environ.get("DISCORD_WEBHOOK_URL", "")
+          print(f"Webhook URL length: {len(webhook_url)}")
+          print(f"Webhook URL starts with: {webhook_url[:40]}")
+
+          if not webhook_url:
+              print("ERROR: DISCORD_WEBHOOK_URL secret is empty!")
+              exit(1)
+
           # Get the diff of index.html
           diff = subprocess.getoutput("git diff HEAD~1 HEAD -- index.html")
+          print(f"Diff length: {len(diff)} chars")
 
-          # Detect new companies (new card-name added)
+          # Detect new companies
           new_companies = re.findall(r'^\+.*class="card-name"[^>]*>([^<]+)', diff, re.MULTILINE)
           new_companies = [c.replace("🔥 Urgent","").replace("NEW","").strip() for c in new_companies if c.strip()]
-
-          # Detect new urgent badges
-          urgent = re.findall(r'^\+.*hot-badge.*🔥 Urgent', diff, re.MULTILINE)
 
           # Detect new roles
           new_roles = re.findall(r'^\+.*class="role-title"[^>]*>([^<]+)', diff, re.MULTILINE)
@@ -46,10 +52,6 @@ jobs:
                   lines.append(f"  • {c}")
               lines.append("")
 
-          if urgent:
-              lines.append("🔥 **Urgent roles — apply now!**")
-              lines.append("")
-
           if new_roles:
               lines.append("💼 **New roles added:**")
               pairs = list(zip(new_roles, new_salaries)) if new_salaries else [(r, "") for r in new_roles]
@@ -58,7 +60,7 @@ jobs:
                   lines.append(f"  • {role}{sal_str}")
               lines.append("")
 
-          if not new_companies and not new_roles and not urgent:
+          if not new_companies and not new_roles:
               lines.append("✏️ Roles and company info have been updated.")
               lines.append("")
 
@@ -67,18 +69,23 @@ jobs:
           lines.append("📩 Interested? Submit your CV directly on the portal!")
 
           message = "\n".join(lines)
+          print(f"Message to send:\n{message}")
 
           # Send to Discord
-          payload = json.dumps({"content": message, "username": "ST Job Alerts"}).encode()
+          payload = json.dumps({"content": message, "username": "ST Job Alerts"}).encode("utf-8")
           req = urllib.request.Request(
-              os.environ["DISCORD_WEBHOOK_URL"],
+              webhook_url.strip(),
               data=payload,
               headers={"Content-Type": "application/json"},
               method="POST"
           )
           try:
-              urllib.request.urlopen(req)
-              print("✅ Discord notified!")
+              resp = urllib.request.urlopen(req)
+              print(f"✅ Discord notified! Status: {resp.status}")
+          except urllib.error.HTTPError as e:
+              body = e.read().decode()
+              print(f"❌ HTTP Error {e.code}: {e.reason}")
+              print(f"Response body: {body}")
           except Exception as e:
               print(f"❌ Failed: {e}")
           PYEOF
