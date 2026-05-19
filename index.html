@@ -108,6 +108,16 @@
     .form-row { grid-template-columns: 1fr; }
     .companies-grid { grid-template-columns: 1fr 1fr; }
   }
+
+  .subscribe-bar { background: #f0f4ff; border-bottom: 1px solid #dde5ff; padding: 10px 2.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+  .subscribe-text { font-size: 13px; color: #444; }
+  .subscribe-text strong { color: #1a1a1a; }
+  .subscribe-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
+  .discord-btn { font-size: 13px; font-weight: 600; background: #5865F2; color: #fff; border: none; border-radius: 8px; padding: 8px 16px; cursor: pointer; text-decoration: none; display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+  .discord-btn:hover { background: #4752c4; }
+  .line-btn { font-size: 13px; font-weight: 600; background: #06C755; color: #fff; border: none; border-radius: 8px; padding: 8px 16px; cursor: pointer; text-decoration: none; display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+  .line-btn:hover { background: #05a847; }
+  @media (max-width: 640px) { .subscribe-bar { padding: 10px 1rem; } }
 </style>
 </head>
 <body>
@@ -129,7 +139,12 @@
 <button class="filter-btn" onclick="filter('fintech',this)">FinTech</button>
 <button class="filter-btn" onclick="filter('ai',this)">AI / ML</button>
 </div>
-</header>
+</header><div class="subscribe-bar">
+<span class="subscribe-text">🔔 <strong>Get notified when new roles are added</strong> — join our channel</span>
+<div class="subscribe-buttons">
+<a class="discord-btn" href="https://discord.gg/CczMnP27a2" target="_blank">💬 Join Discord</a>
+<a class="line-btn" href="#" target="_blank">📲 Follow on LINE</a>
+</div></div>
 <div class="count-bar" id="count-bar">26 companies shown</div>
 <div class="grid" id="grid">
 <!-- 1. CADDi — Japanese required -->
@@ -678,7 +693,6 @@
 <div class="link-row"><span class="link-label">Careers</span><a href="https://hrmos.co/pages/unext/jobs" target="_blank">Career page ↗</a></div></div>
 </div>
 </div>
-
 <div class="apply-section">
 <h2>📩 Express Interest</h2>
 <p>Select the companies and roles you're interested in, attach your CV, and ST will be in touch.</p>
