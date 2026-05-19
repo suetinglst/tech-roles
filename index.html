@@ -879,55 +879,32 @@ function clearAll() {
 
 
 
-// Handle Formspree AJAX submission
-window.addEventListener('DOMContentLoaded', function() {
-  var applyForm = document.getElementById('apply-form');
-  var successDiv = document.getElementById('form-success');
-  
-  if (!applyForm || !successDiv) {
-    console.log('Form or success div not found');
-    return;
-  }
-  
-  successDiv.style.display = 'none';
-  
-  applyForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    
-    var btn = applyForm.querySelector('.submit-btn');
-    btn.textContent = 'Sending...';
-    btn.disabled = true;
-    
-    var data = new FormData(applyForm);
-    
-    fetch('https://formspree.io/f/meedqzld', {
-      method: 'POST',
-      body: data,
-      headers: { 'Accept': 'application/json' }
-    })
-    .then(function(res) {
-      console.log('Response status:', res.status);
-      if (res.ok) {
-        applyForm.style.display = 'none';
-        successDiv.style.display = 'block';
-        successDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      } else {
-        btn.textContent = 'Send to ST →';
-        btn.disabled = false;
-        alert('Something went wrong. Please email ST at sueting.lim@roberthalf.jp');
-      }
-    })
-    .catch(function(err) {
-      console.log('Error:', err);
+
+
+document.getElementById('apply-form').onsubmit = function(e) {
+  e.preventDefault();
+  var btn = this.querySelector('.submit-btn');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  var self = this;
+  fetch('https://formspree.io/f/meedqzld', {
+    method: 'POST',
+    body: new FormData(this),
+    headers: {'Accept': 'application/json'}
+  }).then(function(r) {
+    if (r.ok) {
+      self.innerHTML = '<div style="padding:2rem;text-align:center;color:#1a6644;font-size:16px;font-weight:600;background:#e6f4ee;border-radius:12px;">✅ Thank you! ST will review your CV and be in touch within 2 business days.</div>';
+    } else {
       btn.textContent = 'Send to ST →';
       btn.disabled = false;
-      alert('Something went wrong. Please email ST at sueting.lim@roberthalf.jp');
-    });
-    
-    return false;
+      alert('Something went wrong. Please email sueting.lim@roberthalf.jp');
+    }
+  }).catch(function() {
+    btn.textContent = 'Send to ST →';
+    btn.disabled = false;
+    alert('Something went wrong. Please email sueting.lim@roberthalf.jp');
   });
-});
+};
 </script>
 </body>
 </html>
