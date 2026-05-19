@@ -1,0 +1,84 @@
+name: Notify Discord on Portal Update
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'index.html'
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      - name: Detect changes and notify Discord
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+          python3 << 'PYEOF'
+          import os, re, json, urllib.request, subprocess
+
+          # Get the diff of index.html
+          diff = subprocess.getoutput("git diff HEAD~1 HEAD -- index.html")
+
+          # Detect new companies (new card-name added)
+          new_companies = re.findall(r'^\+.*class="card-name"[^>]*>([^<]+)', diff, re.MULTILINE)
+          new_companies = [c.replace("🔥 Urgent","").replace("NEW","").strip() for c in new_companies if c.strip()]
+
+          # Detect new urgent badges
+          urgent = re.findall(r'^\+.*hot-badge.*🔥 Urgent', diff, re.MULTILINE)
+
+          # Detect new roles
+          new_roles = re.findall(r'^\+.*class="role-title"[^>]*>([^<]+)', diff, re.MULTILINE)
+          new_salaries = re.findall(r'^\+.*class="role-salary"[^>]*>([^<]+)', diff, re.MULTILINE)
+
+          # Build message
+          lines = ["📋 **ST's Job Portal has been updated!**", ""]
+
+          if new_companies:
+              lines.append("🆕 **New companies added:**")
+              for c in new_companies[:5]:
+                  lines.append(f"  • {c}")
+              lines.append("")
+
+          if urgent:
+              lines.append("🔥 **Urgent roles — apply now!**")
+              lines.append("")
+
+          if new_roles:
+              lines.append("💼 **New roles added:**")
+              pairs = list(zip(new_roles, new_salaries)) if new_salaries else [(r, "") for r in new_roles]
+              for role, salary in pairs[:5]:
+                  sal_str = f" | {salary}" if salary else ""
+                  lines.append(f"  • {role}{sal_str}")
+              lines.append("")
+
+          if not new_companies and not new_roles and not urgent:
+              lines.append("✏️ Roles and company info have been updated.")
+              lines.append("")
+
+          lines.append("👉 **View all roles:** https://suetinglst.github.io/tech-roles/")
+          lines.append("")
+          lines.append("📩 Interested? Submit your CV directly on the portal!")
+
+          message = "\n".join(lines)
+
+          # Send to Discord
+          payload = json.dumps({"content": message, "username": "ST Job Alerts"}).encode()
+          req = urllib.request.Request(
+              os.environ["DISCORD_WEBHOOK_URL"],
+              data=payload,
+              headers={"Content-Type": "application/json"},
+              method="POST"
+          )
+          try:
+              urllib.request.urlopen(req)
+              print("✅ Discord notified!")
+          except Exception as e:
+              print(f"❌ Failed: {e}")
+          PYEOF
