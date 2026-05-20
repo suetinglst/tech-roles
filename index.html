@@ -839,10 +839,10 @@
 <input accept=".pdf,.doc,.docx" name="cv" required="" type="file"/>
 </div>
 <button class="submit-btn" type="submit">Send to ST →</button>
-<div class="form-success" id="form-success">
+
+</form><div class="form-success" id="form-success" style="display:none">
       ✅ Thank you! ST will review your CV and be in touch within 2 business days.
     </div>
-</form>
 </div>
 <div class="legend">
 <span class="legend-item"><span class="hot-badge">🔥 Urgent</span> Actively hiring — role closing soon, apply now</span>
@@ -893,7 +893,8 @@ document.getElementById('apply-form').onsubmit = function(e) {
     headers: {'Accept': 'application/json'}
   }).then(function(r) {
     if (r.ok) {
-      self.innerHTML = '<div style="padding:2rem;text-align:center;color:#1a6644;font-size:16px;font-weight:600;background:#e6f4ee;border-radius:12px;">✅ Thank you! ST will review your CV and be in touch within 2 business days.</div>';
+      self.style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
     } else {
       btn.textContent = 'Send to ST →';
       btn.disabled = false;
@@ -905,6 +906,11 @@ document.getElementById('apply-form').onsubmit = function(e) {
     alert('Something went wrong. Please email sueting.lim@roberthalf.jp');
   });
 };
+
+document.addEventListener('DOMContentLoaded', function() {
+  var s = document.getElementById('form-success');
+  if (s) s.style.display = 'none';
+});
 </script>
 </body>
 </html>
