@@ -118,19 +118,21 @@
   .line-btn { font-size: 13px; font-weight: 600; background: #06C755; color: #fff; border: none; border-radius: 8px; padding: 8px 16px; cursor: pointer; text-decoration: none; display: flex; align-items: center; gap: 6px; white-space: nowrap; }
   .line-btn:hover { background: #05a847; }
   @media (max-width: 640px) { .subscribe-bar { padding: 10px 1rem; } }
-</style>
+
+  .new-role-badge { font-size: 10px; font-weight: 600; background: #fef2f2; color: #c0392b; padding: 1px 5px; border-radius: 4px; margin-left: 5px; vertical-align: middle; }
+  .hot-role-badge { font-size: 10px; font-weight: 600; background: #fff3e0; color: #e65100; padding: 1px 5px; border-radius: 4px; margin-left: 5px; vertical-align: middle; }</style>
 </head>
 <body>
 <header>
 <div class="header-top">
 <div>
 <h1>Open Roles — Tokyo Tech 🇯🇵</h1>
-<p>Curated by ST · Robert Half Technology · 26 companies</p>
+<p>Curated by ST · Robert Half Technology · 27 companies</p>
 </div>
 <a class="contact-btn" href="https://outlook.office.com/bookwithme/user/f45f6f6966154df7ac6814f549609059@roberthalf.com/meetingtype/CnIkp2QSBkGIjsvpDqrOWg2?anonymous&amp;ismsaljsauthenabled&amp;ep=mLinkFromTile" target="_blank">📅 Book a call with ST</a>
 </div>
 <div class="filter-bar">
-<button class="filter-btn active" onclick="filter('all',this)">All (26)</button>
+<button class="filter-btn active" onclick="filter('all',this)">All (27)</button>
 <button class="filter-btn" onclick="filter('startup',this)">Startup / VC-backed</button>
 <button class="filter-btn" onclick="filter('public',this)">TSE Listed</button>
 <button class="filter-btn" onclick="filter('unicorn',this)">Unicorn</button>
@@ -172,30 +174,33 @@
 <!-- 23. Paidy -->
 <!-- 24. THECOO -->
 <!-- 25. Tofu -->
-<div class="card" data-tags="public english fintech">
-<div class="card-head">
-<div class="card-head-left">
-<img alt="Nomura" class="company-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="logos/nomura.png"/>
-<div class="company-logo-fallback" style="display:none;background:#1a237e;color:#fff">N</div>
-<span class="card-name">Nomura Securities 野村證券<span class="new-badge">NEW</span><span class="hot-badge">🔥 Urgent</span></span>
-</div>
-<span class="badge badge-public">TSE Listed · Founded 1925</span>
-</div>
-<p class="card-desc">Japan's largest investment bank and securities firm. Global network spanning 30+ countries. IT division has 25+ nationalities. Agile in-house development team building next-gen financial platforms — blockchain, digital assets, cloud, and observability infrastructure.</p>
-<div class="tags">
-<span class="tag">Investment Banking</span><span class="tag">FinTech</span><span class="tag">Global</span>
-</div>
-<div class="work-mode">📍 Otemachi, Tokyo · Hybrid</div>
-<p class="roles-label">Open Roles</p>
-<div class="roles-table">
-<div class="role-row"><span class="role-title">Observability Lead Engineer</span><span class="role-salary">¥12–18M</span></div>
-</div>
-<div class="links">
-<div class="link-row"><span class="link-label">Website</span><a href="https://www.nomura.co.jp/" target="_blank">nomura.co.jp ↗</a></div>
-<div class="link-row"><span class="link-label">Careers</span><a href="https://progres02.jposting.net/pgnomura/u/job.phtml" target="_blank">Career page (JPOSTING) ↗</a></div>
-<div class="link-row"><span class="link-label">JD</span><a href="https://progres02.jposting.net/pgnomura/u/job.phtml?job_code=1921" target="_blank">Observability Lead Engineer JD ↗</a></div>
-</div>
-</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="card" data-tags="startup ai fintech">
 <div class="card-head">
 <div class="card-head-left">
@@ -211,11 +216,100 @@
 <span class="tag tag-ja">🇯🇵 Japanese required</span>
 </div>
 <div class="work-mode">📍 Ebisu, Tokyo · Hybrid 2–3 days/week</div>
-<p class="roles-label">Open Roles</p><div class="roles-table"><div class="role-row"><span class="role-title">DevOps Engineer</span><span class="role-salary">¥11M</span></div></div><div class="links">
+<p class="roles-label">Open Roles</p><div class="roles-table"><div class="role-row"><span class="role-title">DevOps Engineer<span class="hot-role-badge">🔥 Urgent</span></span><span class="role-salary">¥11M</span></div></div><div class="links">
 <div class="link-row"><span class="link-label">Website</span><a href="https://www.gotofu.com/" target="_blank">gotofu.com ↗</a></div>
 <div class="link-row"><span class="link-label">JD</span><a href="mailto:sueting.lim@roberthalf.jp" target="_blank">Email ST for JD ↗</a></div></div>
 </div>
-<div class="card" data-tags="startup english">
+
+  <div class="card" data-tags="public english fintech">
+<div class="card-head">
+<div class="card-head-left">
+<img alt="Nomura" class="company-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="logos/nomura.png"/>
+<div class="company-logo-fallback" style="display:none;background:#1a237e;color:#fff">N</div>
+<span class="card-name">Nomura Securities 野村證券</span>
+</div>
+<span class="badge badge-public">TSE Listed · Founded 1925</span>
+</div>
+<p class="card-desc">Japan's largest investment bank and securities firm. Global network spanning 30+ countries. IT division has 25+ nationalities. Agile in-house development team building next-gen financial platforms — blockchain, digital assets, cloud, and observability infrastructure.</p>
+<div class="tags">
+<span class="tag">Investment Banking</span><span class="tag">FinTech</span><span class="tag">Global</span>
+</div>
+<div class="work-mode">📍 Otemachi, Tokyo · Hybrid</div>
+<p class="roles-label">Open Roles</p>
+<div class="roles-table">
+<div class="role-row"><span class="role-title">Observability Lead Engineer<span class="new-role-badge">NEW</span></span><span class="role-salary">¥12–18M</span></div>
+<div class="role-row"><span class="role-title">Senior C Developer (Front Office Trading)<span class="new-role-badge">NEW</span></span><span class="role-salary">¥12–18M</span></div></div>
+<div class="links">
+<div class="link-row"><span class="link-label">Website</span><a href="https://www.nomura.co.jp/" target="_blank">nomura.co.jp ↗</a></div>
+<div class="link-row"><span class="link-label">Careers</span><a href="https://progres02.jposting.net/pgnomura/u/job.phtml" target="_blank">Career page (JPOSTING) ↗</a></div>
+<div class="link-row"><span class="link-label">JD</span><a href="https://progres02.jposting.net/pgnomura/u/job.phtml?job_code=1921" target="_blank">Observability Lead Engineer JD ↗</a></div>
+<div class="link-row"><span class="link-label">JD 2</span><a href="https://progres02.jposting.net/pgnomura/u/job.phtml?job_code=1867&amp;src=levels.fyi" target="_blank">Senior C Developer JD ↗</a></div></div>
+</div>
+
+  <div class="card" data-tags="public english ai">
+<div class="card-head">
+<div class="card-head-left">
+<img alt="Tripla" class="company-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="logos/tripla.png"/>
+<div class="company-logo-fallback" style="display:none;background:#3b5bdb;color:#fff">T</div>
+<span class="card-name">Tripla</span>
+</div>
+<span class="badge badge-public">TSE: 5136</span>
+</div>
+<p class="card-desc">Hotel-tech SaaS — AI booking engine, chatbot, payment, CRM/MA for hospitality. Expanding across Asia. English is the engineering team's official language.</p>
+<div class="tags">
+<span class="tag">Travel Tech</span><span class="tag">Hospitality SaaS</span><span class="tag">AI</span>
+<span class="tag tag-en">🌏 English OK</span>
+</div>
+<div class="work-mode">📍 Tokyo · Hybrid</div>
+<p class="roles-label">Open Roles</p><div class="roles-table"><div class="role-row"><span class="role-title">Senior Software Engineer</span><span class="role-salary">¥8–12M</span></div><div class="role-row"><span class="role-title">Senior Platform Engineer<span class="new-role-badge">NEW</span></span><span class="role-salary">¥12–14M</span></div></div><div class="links">
+<div class="link-row"><span class="link-label">Website</span><a href="https://tripla.io/" target="_blank">tripla.io ↗</a></div>
+<div class="link-row"><span class="link-label">Careers</span><a href="https://sg.wantedly.com/companies/tripla2/projects" target="_blank">Career page (Wantedly) ↗</a></div>
+</div>
+</div>
+
+  <div class="card" data-tags="public fintech">
+<div class="card-head">
+<div class="card-head-left">
+<img alt="Mercari" class="company-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="logos/mercari.png"/>
+<div class="company-logo-fallback" style="display:none;background:#ff0211;color:#fff">M</div>
+<span class="card-name">Mercari </span>
+</div>
+<span class="badge badge-public">TSE Listed</span>
+</div>
+<p class="card-desc">Japan's largest C2C marketplace (TSE listed). Engineering-driven company hiring across multiple product areas including marketplace, payments (Merpay), and crypto (Mercoin). Go backend, consumer-facing at massive scale. Hybrid 2 days/week.</p>
+<div class="tags">
+<span class="tag">FinTech</span><span class="tag">Crypto</span><span class="tag">Go</span>
+<span class="tag tag-ja">🇯🇵 Japanese required</span>
+</div>
+<div class="work-mode">📍 Tokyo · Hybrid · 2 days/week in office</div>
+<p class="roles-label">Open Roles</p><div class="roles-table"><div class="role-row"><span class="role-title">Backend Architect / Platform Engineer [Mercari]<span class="new-role-badge">NEW</span></span><span class="role-salary">¥12–18M</span></div><div class="role-row"><span class="role-title">Senior Backend Engineer [Merpay]</span><span class="role-salary">¥8–15M</span></div><div class="role-row"><span class="role-title">Senior Frontend Engineer [Merpay]</span><span class="role-salary">¥8–15M</span></div><div class="role-row"><span class="role-title">iOS Engineer [Mercoin]</span><span class="role-salary">¥8–15M</span></div><div class="role-row"><span class="role-title">Android Engineer [Mercoin]</span><span class="role-salary">¥8–15M</span></div></div><div class="links">
+<div class="link-row"><span class="link-label">Website</span><a href="https://about.mercari.com/about/company/" target="_blank">about.mercari.com ↗</a></div>
+<div class="link-row"><span class="link-label">Careers</span><a href="https://careers.mercari.com/" target="_blank">Career page ↗</a></div>
+</div>
+</div>
+
+  <div class="card" data-tags="startup remote ai">
+<div class="card-head">
+<div class="card-head-left">
+<img alt="Scoville" class="company-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="logos/scoville.png"/>
+<div class="company-logo-fallback" style="display:none;background:#e85d04;color:#fff">S</div>
+<span class="card-name">Scoville</span>
+</div>
+<span class="badge badge-startup">Founded 2016</span>
+</div>
+<p class="card-desc">Digital product studio building SaaS across HR, healthcare, hospitality, and warehousing. Flagship products: Mikketa (HR recruiting) and Noman (healthcare AI, forecasted ¥1B in sales). 70 international engineers, English-first culture.</p>
+<div class="tags">
+<span class="tag">AI / IoT</span><span class="tag">Healthcare</span><span class="tag">HR Tech</span>
+<span class="tag tag-ja">🇯🇵 Japanese required</span><span class="tag tag-remote">🏠 Up to 100% remote</span>
+</div>
+<div class="work-mode">📍 Ebisu, Shibuya-ku + Kyoto office · Remote OK</div>
+<p class="roles-label">Open Roles</p><div class="roles-table"><div class="role-row"><span class="role-title">Product Manager (Kokonobi)<span class="new-role-badge">NEW</span></span><span class="role-salary">¥8–12M</span></div><div class="role-row"><span class="role-title">Ruby on Rails Engineer (Noman)<span class="new-role-badge">NEW</span></span><span class="role-salary">¥9–13M</span></div><div class="role-row"><span class="role-title">Full-Stack Software Engineer (Attelu)<span class="new-role-badge">NEW</span></span><span class="role-salary">¥8–11M</span></div><div class="role-row"><span class="role-title">Mobile Application Engineer (CircleApp)<span class="new-role-badge">NEW</span></span><span class="role-salary">¥8–12M</span></div><div class="role-row"><span class="role-title">Elixir Engineer (Hirebit/En-courage/CircleApp)<span class="new-role-badge">NEW</span></span><span class="role-salary">¥8–12M</span></div></div><div class="links">
+<div class="link-row"><span class="link-label">Website</span><a href="https://scoville.jp/" target="_blank">scoville.jp ↗</a></div>
+<div class="link-row"><span class="link-label">Careers</span><a href="https://scoville.jp/en/careers/open-positions/" target="_blank">Career page ↗</a></div>
+</div>
+</div>
+
+  <div class="card" data-tags="startup english">
 <div class="card-head">
 <div class="card-head-left">
 <img alt="Cybereason" class="company-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="logos/cybereason.png"/>
@@ -235,7 +329,8 @@
 <div class="link-row"><span class="link-label">Careers</span><a href="https://boards.greenhouse.io/cybereason" target="_blank">Career page (Greenhouse) ↗</a></div>
 </div>
 </div>
-<div class="card" data-tags="startup english ai">
+
+  <div class="card" data-tags="startup english ai">
 <div class="card-head">
 <div class="card-head-left">
 <img alt="H2 Corporation" class="company-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="logos/h2.png"/>
@@ -255,7 +350,8 @@
 <div class="link-row"><span class="link-label">Careers</span><a href="https://herp.careers/v1/h2corp" target="_blank">Career page (HERP) ↗</a></div>
 </div>
 </div>
-<div class="card" data-tags="public english">
+
+  <div class="card" data-tags="public english">
 <div class="card-head">
 <div class="card-head-left">
 <img alt="HENNGE" class="company-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="logos/hennge.png"/>
@@ -275,7 +371,8 @@
 <div class="link-row"><span class="link-label">Careers</span><a href="https://recruit.hennge.com/en/" target="_blank">Career page (EN) ↗</a></div>
 </div>
 </div>
-<div class="card" data-tags="startup english fintech remote">
+
+  <div class="card" data-tags="startup english fintech remote">
 <div class="card-head">
 <div class="card-head-left">
 <img alt="KOMOJU" class="company-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="logos/komoju.png"/>
@@ -295,7 +392,8 @@
 <div class="link-row"><span class="link-label">Careers</span><a href="https://jobs.workable.com/company/mZjWAYiyW5P4Skh8CUbLg3/jobs-at-komoju" target="_blank">Career page (Workable) ↗</a></div>
 </div>
 </div>
-<div class="card" data-tags="startup english fintech">
+
+  <div class="card" data-tags="startup english fintech">
 <div class="card-head">
 <div class="card-head-left">
 <img alt="LiNKX" class="company-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="logos/linkx.png"/>
@@ -315,7 +413,8 @@
 <div class="link-row"><span class="link-label">Careers</span><a href="https://open.talentio.com/r/1/c/linkx-dev/homes/4155" target="_blank">採用情報 / LiNKX ↗</a></div>
 </div>
 </div>
-<div class="card" data-tags="startup english fintech">
+
+  <div class="card" data-tags="startup english fintech">
 <div class="card-head">
 <div class="card-head-left">
 <img alt="Paidy" class="company-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="logos/paidy.png"/>
@@ -335,7 +434,8 @@
 <div class="link-row"><span class="link-label">Careers</span><a href="https://job-boards.greenhouse.io/paidyinc" target="_blank">Career page (Greenhouse) ↗</a></div>
 </div>
 </div>
-<div class="card" data-tags="public english fintech remote">
+
+  <div class="card" data-tags="public english fintech remote">
 <div class="card-head">
 <div class="card-head-left">
 <img alt="PayPay Card" class="company-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="logos/paypay.png"/>
@@ -355,27 +455,8 @@
 <div class="link-row"><span class="link-label">Careers</span><a href="https://www.paypay-card.co.jp/recruit/" target="_blank">Career page ↗</a></div>
 </div>
 </div>
-<div class="card" data-tags="startup remote ai">
-<div class="card-head">
-<div class="card-head-left">
-<img alt="Scoville" class="company-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="logos/scoville.png"/>
-<div class="company-logo-fallback" style="display:none;background:#e85d04;color:#fff">S</div>
-<span class="card-name">Scoville</span>
-</div>
-<span class="badge badge-startup">Founded 2016</span>
-</div>
-<p class="card-desc">Digital product studio building SaaS across HR, healthcare, hospitality, and warehousing. Flagship products: Mikketa (HR recruiting) and Noman (healthcare AI, forecasted ¥1B in sales). 70 international engineers, English-first culture.</p>
-<div class="tags">
-<span class="tag">AI / IoT</span><span class="tag">Healthcare</span><span class="tag">HR Tech</span>
-<span class="tag tag-ja">🇯🇵 Japanese required</span><span class="tag tag-remote">🏠 Up to 100% remote</span>
-</div>
-<div class="work-mode">📍 Ebisu, Shibuya-ku + Kyoto office · Remote OK</div>
-<p class="roles-label">Open Roles</p><div class="roles-table"><div class="role-row"><span class="role-title">Ruby Engineer (×3)</span><span class="role-salary">¥8–12M</span></div><div class="role-row"><span class="role-title">Product Manager</span><span class="role-salary">¥8–12M</span></div><div class="role-row"><span class="role-title">Product Designer</span><span class="role-salary">¥8–12M</span></div></div><div class="links">
-<div class="link-row"><span class="link-label">Website</span><a href="https://scoville.jp/" target="_blank">scoville.jp ↗</a></div>
-<div class="link-row"><span class="link-label">Careers</span><a href="https://scoville.jp/en/careers/open-positions/" target="_blank">Career page ↗</a></div>
-</div>
-</div>
-<div class="card" data-tags="public english ai">
+
+  <div class="card" data-tags="public english ai">
 <div class="card-head">
 <div class="card-head-left">
 <img alt="THECOO" class="company-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="logos/thecoo.png"/>
@@ -395,27 +476,8 @@
 <div class="link-row"><span class="link-label">Careers</span><a href="https://hrmos.co/pages/thecoo/jobs" target="_blank">Career page (HRMOS) ↗</a></div>
 </div>
 </div>
-<div class="card" data-tags="public english ai">
-<div class="card-head">
-<div class="card-head-left">
-<img alt="Tripla" class="company-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="logos/tripla.png"/>
-<div class="company-logo-fallback" style="display:none;background:#3b5bdb;color:#fff">T</div>
-<span class="card-name">Tripla</span>
-</div>
-<span class="badge badge-public">TSE: 5136</span>
-</div>
-<p class="card-desc">Hotel-tech SaaS — AI booking engine, chatbot, payment, CRM/MA for hospitality. Expanding across Asia. English is the engineering team's official language.</p>
-<div class="tags">
-<span class="tag">Travel Tech</span><span class="tag">Hospitality SaaS</span><span class="tag">AI</span>
-<span class="tag tag-en">🌏 English OK</span>
-</div>
-<div class="work-mode">📍 Tokyo · Hybrid</div>
-<p class="roles-label">Open Roles</p><div class="roles-table"><div class="role-row"><span class="role-title">Senior Software Engineer</span><span class="role-salary">¥8–12M</span></div></div><div class="links">
-<div class="link-row"><span class="link-label">Website</span><a href="https://tripla.io/" target="_blank">tripla.io ↗</a></div>
-<div class="link-row"><span class="link-label">Careers</span><a href="https://sg.wantedly.com/companies/tripla2/projects" target="_blank">Career page (Wantedly) ↗</a></div>
-</div>
-</div>
-<div class="card" data-tags="startup remote">
+
+  <div class="card" data-tags="startup remote">
 <div class="card-head">
 <div class="card-head-left">
 <img alt="CADDi" class="company-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="logos/caddi.png"/>
@@ -435,7 +497,8 @@
 <div class="link-row"><span class="link-label">Careers</span><a href="https://open.talentio.com/r/1/c/caddi-jp-recruit/homes/4493" target="_blank">Career page (Talentio) ↗</a></div>
 </div>
 </div>
-<div class="card" data-tags="startup ai">
+
+  <div class="card" data-tags="startup ai">
 <div class="card-head">
 <div class="card-head-left">
 <img alt="EARTHBRAIN" class="company-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="logos/earthbrain.png"/>
@@ -455,7 +518,8 @@
 <div class="link-row"><span class="link-label">Careers</span><a href="https://hrmos.co/pages/earthbrain/jobs" target="_blank">Career page (HRMOS) ↗</a></div>
 </div>
 </div>
-<div class="card" data-tags="startup fintech remote">
+
+  <div class="card" data-tags="startup fintech remote">
 <div class="card-head">
 <div class="card-head-left">
 <img alt="enechain" class="company-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="logos/enechain.png"/>
@@ -475,7 +539,8 @@
 <div class="link-row"><span class="link-label">Careers</span><a href="https://herp.careers/v1/enechain" target="_blank">Career page (HERP) ↗</a></div>
 </div>
 </div>
-<div class="card" data-tags="startup ai">
+
+  <div class="card" data-tags="startup ai">
 <div class="card-head">
 <div class="card-head-left">
 <img alt="ExaWizards" class="company-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="logos/exawizards.png"/>
@@ -495,7 +560,8 @@
 <div class="link-row"><span class="link-label">Careers</span><a href="https://open.talentio.com/r/1/c/exwzd/homes/4039" target="_blank">Career page (Talentio) ↗</a></div>
 </div>
 </div>
-<div class="card" data-tags="startup ai">
+
+  <div class="card" data-tags="startup ai">
 <div class="card-head">
 <div class="card-head-left">
 <img alt="Flywheel" class="company-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="logos/flywheel.png"/>
@@ -515,7 +581,8 @@
 <div class="link-row"><span class="link-label">Careers</span><a href="https://www.flywheel.jp/careers-top/" target="_blank">Career page ↗</a></div>
 </div>
 </div>
-<div class="card" data-tags="public">
+
+  <div class="card" data-tags="public">
 <div class="card-head">
 <div class="card-head-left">
 <img alt="Geniee" class="company-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="logos/geniee.png"/>
@@ -535,7 +602,8 @@
 <div class="link-row"><span class="link-label">Careers</span><a href="https://hrmos.co/pages/geniee/jobs" target="_blank">Career page ↗</a></div>
 </div>
 </div>
-<div class="card" data-tags="startup ai">
+
+  <div class="card" data-tags="startup ai">
 <div class="card-head">
 <div class="card-head-left">
 <img alt="HRBrain" class="company-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="logos/hrbrain.png"/>
@@ -555,7 +623,8 @@
 <div class="link-row"><span class="link-label">Careers</span><a href="https://hrmos.co/pages/hrbrain/jobs" target="_blank">All open positions ↗</a></div>
 </div>
 </div>
-<div class="card" data-tags="startup ai">
+
+  <div class="card" data-tags="startup ai">
 <div class="card-head">
 <div class="card-head-left">
 <img alt="LegalOn" class="company-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="logos/legalon.png"/>
@@ -574,27 +643,33 @@
 <div class="link-row"><span class="link-label">Website</span><a href="https://legalontech.jp/" target="_blank">legalontech.jp ↗</a></div>
 <div class="link-row"><span class="link-label">Careers</span><a href="https://herp.careers/careers/companies/legalforce" target="_blank">Career page (HERP) ↗</a></div></div>
 </div>
-<div class="card" data-tags="public fintech">
+
+  <div class="card" data-tags="public japanese ai fintech">
 <div class="card-head">
 <div class="card-head-left">
-<img alt="Mercari" class="company-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="logos/mercari.png"/>
-<div class="company-logo-fallback" style="display:none;background:#ff0211;color:#fff">M</div>
-<span class="card-name">Mercari (Merpay / Mercoin)</span>
+<img alt="LINEYahoo" class="company-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="logos/lineyahoo.png"/>
+<div class="company-logo-fallback" style="display:none;background:#06c755;color:#fff">L</div>
+<span class="card-name">LINEYahoo (LY Corporation)</span>
 </div>
-<span class="badge badge-public">TSE Listed</span>
+<span class="badge badge-public">TSE Listed · 27,000 staff</span>
 </div>
-<p class="card-desc">Mercari's fintech division hiring for Merpay (payments) and Mercoin (crypto/blockchain). Go backend, consumer-facing at scale. Hybrid 2 days/week.</p>
+<p class="card-desc">Japan's largest internet company — merger of LINE and Yahoo! Japan under LY Corporation. Operates LINE (96M MAU), Yahoo! Japan, PayPay, and 100+ services. One of Japan's most iconic tech brands with massive scale.</p>
 <div class="tags">
-<span class="tag">FinTech</span><span class="tag">Crypto</span><span class="tag">Go</span>
+<span class="tag">Internet</span><span class="tag">Consumer Tech</span><span class="tag">AI</span>
 <span class="tag tag-ja">🇯🇵 Japanese required</span>
 </div>
-<div class="work-mode">📍 Tokyo · Hybrid · 2 days/week in office</div>
-<p class="roles-label">Open Roles</p><div class="roles-table"><div class="role-row"><span class="role-title">Senior Backend Engineer</span><span class="role-salary">¥8–15M</span></div><div class="role-row"><span class="role-title">Senior Frontend Engineer</span><span class="role-salary">¥8–15M</span></div><div class="role-row"><span class="role-title">iOS Engineer</span><span class="role-salary">¥8–15M</span></div><div class="role-row"><span class="role-title">Android Engineer</span><span class="role-salary">¥8–15M</span></div></div><div class="links">
-<div class="link-row"><span class="link-label">Website</span><a href="https://about.mercari.com/about/company/" target="_blank">about.mercari.com ↗</a></div>
-<div class="link-row"><span class="link-label">Careers</span><a href="https://careers.mercari.com/" target="_blank">Career page ↗</a></div>
+<div class="work-mode">📍 Tokyo · Hybrid (2 days office)</div>
+<p class="roles-label">Open Roles</p>
+<div class="roles-table">
+<div class="role-row"><span class="role-title">Contact ST for open roles</span><span class="role-salary">Contact ST</span></div>
+</div>
+<div class="links">
+<div class="link-row"><span class="link-label">Website</span><a href="https://www.lycorp.co.jp/en/" target="_blank">lycorp.co.jp ↗</a></div>
+<div class="link-row"><span class="link-label">Careers</span><a href="https://www.lycorp.co.jp/ja/recruit/career/" target="_blank">Career page ↗</a></div>
 </div>
 </div>
-<div class="card" data-tags="public fintech ai">
+
+  <div class="card" data-tags="public fintech ai">
 <div class="card-head">
 <div class="card-head-left">
 <img alt="Money Forward" class="company-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="logos/moneyforward.png"/>
@@ -614,7 +689,8 @@
 <div class="link-row"><span class="link-label">Careers</span><a href="https://hrmos.co/pages/moneyforward/jobs?category=1666322478647443458,1666323214451404800" target="_blank">All engineer positions ↗</a></div>
 </div>
 </div>
-<div class="card" data-tags="public">
+
+  <div class="card" data-tags="public">
 <div class="card-head">
 <div class="card-head-left">
 <img alt="Sansan" class="company-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="logos/sansan.png"/>
@@ -634,7 +710,8 @@
 <div class="link-row"><span class="link-label">Careers</span><a href="https://jp.corp-sansan.com/recruit/" target="_blank">Career page ↗</a></div>
 <div class="link-row"><span class="link-label">Media</span><a href="https://media.sansan-engineering.com/" target="_blank">Tech Division media ↗</a></div></div>
 </div>
-<div class="card" data-tags="unicorn">
+
+  <div class="card" data-tags="unicorn">
 <div class="card-head">
 <div class="card-head-left">
 <img alt="SmartHR" class="company-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="logos/smarthr.png"/>
@@ -654,7 +731,8 @@
 <div class="link-row"><span class="link-label">Careers</span><a href="https://hello-world.smarthr.co.jp/" target="_blank">Engineer careers page ↗</a></div>
 </div>
 </div>
-<div class="card" data-tags="startup ai fintech">
+
+  <div class="card" data-tags="startup ai fintech">
 <div class="card-head">
 <div class="card-head-left">
 <img alt="Trust Inc." class="company-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="logos/trust.png"/>
@@ -673,7 +751,8 @@
 <div class="link-row"><span class="link-label">Website</span><a href="https://trust-partner.co.jp/" target="_blank">trust-partner.co.jp ↗</a></div>
 <div class="link-row"><span class="link-label">Careers</span><a href="https://hrmos.co/pages/trust-partner/jobs" target="_blank">Career page (HRMOS) ↗</a></div></div>
 </div>
-<div class="card" data-tags="public remote">
+
+  <div class="card" data-tags="public remote">
 <div class="card-head">
 <div class="card-head-left">
 <img alt="U-NEXT" class="company-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="logos/unext.png"/>
@@ -692,7 +771,8 @@
 <div class="link-row"><span class="link-label">Website</span><a href="https://www.unext.co.jp/ja" target="_blank">unext.co.jp ↗</a></div>
 <div class="link-row"><span class="link-label">Careers</span><a href="https://hrmos.co/pages/unext/jobs" target="_blank">Career page ↗</a></div></div>
 </div>
-</div>
+
+  </div>
 <div class="apply-section">
 <h2>📩 Express Interest</h2>
 <p>Select the companies and roles you're interested in, attach your CV, and ST will be in touch.</p>
@@ -845,7 +925,7 @@
 </div>
 <div class="legend">
 <span class="legend-item"><span class="hot-badge">🔥 Urgent</span> Actively hiring — role closing soon, apply now</span>
-<span class="legend-item"><span class="new-badge">NEW</span> Recently added to this list</span>
+<span class="legend-item"> Recently added to this list</span>
 <span class="legend-item"><span style="font-size:11px;">🇯🇵 Japanese required</span> Japanese language needed for this role</span>
 <span class="legend-item"><span style="font-size:11px;">🌏 English OK</span> English speakers welcome, Japanese not required</span>
 <span class="legend-item"><span style="font-size:11px;">🏠 Fully Remote</span> Full remote — no regular office requirement</span>
