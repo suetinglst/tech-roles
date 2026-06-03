@@ -1,4 +1,4 @@
-name: Notify Discord on Portal Update
+name: Notify Discord and LINE on Portal Update
 
 on:
   push:
@@ -16,24 +16,27 @@ jobs:
         with:
           fetch-depth: 2
 
-      - name: Detect changes and notify Discord
+      - name: Detect changes and notify Discord + LINE
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          LINE_CHANNEL_TOKEN: ${{ secrets.LINE_CHANNEL_TOKEN }}
         run: |
           python3 << 'PYEOF'
-          import os, re, subprocess
+          import os, re, json, subprocess
+          import urllib.request
 
-          webhook_url = os.environ.get("DISCORD_WEBHOOK_URL", "").strip()
-
-          # Get the diff
+          # Get diff
           diff = subprocess.getoutput("git diff HEAD~1 HEAD -- index.html")
 
-          # Detect changes
+          # Detect new companies
           new_companies = re.findall(r'^\+.*class="card-name"[^>]*>([^<]+)', diff, re.MULTILINE)
           new_companies = [c.replace("🔥 Urgent","").replace("NEW","").strip() for c in new_companies if c.strip()]
+
+          # Detect new roles
           new_roles = re.findall(r'^\+.*class="role-title"[^>]*>([^<]+)', diff, re.MULTILINE)
           new_salaries = re.findall(r'^\+.*class="role-salary"[^>]*>([^<]+)', diff, re.MULTILINE)
 
+          # Build message
           lines = ["📋 **ST's Job Portal has been updated!**", ""]
           if new_companies:
               lines.append("🆕 **New companies added:**")
@@ -53,29 +56,56 @@ jobs:
           lines.append("👉 **View all roles:** https://suetinglst.github.io/tech-roles/")
           lines.append("📩 Interested? Submit your CV directly on the portal!")
 
-          message = "\n".join(lines)
+          discord_message = "\n".join(lines)
+          line_message = discord_message.replace("**", "").replace("*", "")
 
-          # Use curl instead of Python urllib
-          import json
-          payload = json.dumps({"content": message, "username": "ST Job Alerts"})
-          
-          result = subprocess.run([
-              "curl", "-s", "-o", "/tmp/discord_response.txt", "-w", "%{http_code}",
-              "-X", "POST",
-              "-H", "Content-Type: application/json",
-              "-d", payload,
-              webhook_url
-          ], capture_output=True, text=True)
-          
-          http_code = result.stdout.strip()
-          with open("/tmp/discord_response.txt") as f:
-              response_body = f.read()
-          
-          print(f"HTTP Status: {http_code}")
-          print(f"Response: {response_body}")
-          
-          if http_code in ["200", "204"]:
-              print("✅ Discord notified successfully!")
+          # ── Send to Discord ──
+          discord_url = os.environ.get("DISCORD_WEBHOOK_URL", "").strip()
+          if discord_url:
+              payload = json.dumps({"content": discord_message, "username": "ST Job Alerts"}).encode("utf-8")
+              req = urllib.request.Request(
+                  discord_url,
+                  data=payload,
+                  headers={"Content-Type": "application/json"},
+                  method="POST"
+              )
+              try:
+                  result = subprocess.run([
+                      "curl", "-s", "-o", "/tmp/discord_res.txt", "-w", "%{http_code}",
+                      "-X", "POST",
+                      "-H", "Content-Type: application/json",
+                      "-d", json.dumps({"content": discord_message, "username": "ST Job Alerts"}),
+                      discord_url
+                  ], capture_output=True, text=True)
+                  print(f"Discord status: {result.stdout.strip()}")
+              except Exception as e:
+                  print(f"Discord error: {e}")
           else:
-              print(f"❌ Failed with status {http_code}")
+              print("No Discord webhook URL found")
+
+          # ── Send to LINE (broadcast to all followers) ──
+          line_token = os.environ.get("LINE_CHANNEL_TOKEN", "").strip()
+          if line_token:
+              line_payload = json.dumps({
+                  "messages": [{"type": "text", "text": line_message}]
+              })
+              result = subprocess.run([
+                  "curl", "-s", "-o", "/tmp/line_res.txt", "-w", "%{http_code}",
+                  "-X", "POST",
+                  "-H", "Content-Type: application/json",
+                  "-H", f"Authorization: Bearer {line_token}",
+                  "-d", line_payload,
+                  "https://api.line.me/v2/bot/message/broadcast"
+              ], capture_output=True, text=True)
+              http_code = result.stdout.strip()
+              with open("/tmp/line_res.txt") as f:
+                  body = f.read()
+              print(f"LINE status: {http_code}")
+              print(f"LINE response: {body}")
+              if http_code == "200":
+                  print("✅ LINE notified successfully!")
+              else:
+                  print(f"❌ LINE failed: {body}")
+          else:
+              print("No LINE token found")
           PYEOF
