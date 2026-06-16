@@ -137,7 +137,104 @@
   .search-clear:hover { color: #666; }
   @media (max-width: 640px) { .search-wrap { padding: 10px 1rem 0; } }
 
-  .card-stack { font-size: 11px; color: #888; margin-top: 2px; } .stack-label { font-weight: 600; color: #bbb; margin-right: 4px; }</style>
+  .card-stack { font-size: 11px; color: #888; margin-top: 2px; } .stack-label { font-weight: 600; color: #bbb; margin-right: 4px; }
+  /* ── Express Interest Section ── */
+  .apply-section { margin: 2.5rem 2.5rem 0; }
+  .apply-section h2 { font-size: 18px; font-weight: 600; margin-bottom: 4px; }
+  .apply-section .apply-subtitle { font-size: 13px; color: #888; margin-bottom: 1.25rem; }
+  .apply-form { background: #fff; border: 1px solid #e8e6e0; border-radius: 14px; padding: 1.75rem; display: flex; flex-direction: column; gap: 1rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 5px; }
+  .form-group label { font-size: 12px; font-weight: 600; color: #666; text-transform: uppercase; letter-spacing: 0.4px; }
+  .form-group input, .form-group textarea, .form-group select { font-size: 13px; padding: 9px 12px; border: 1px solid #ddd; border-radius: 8px; outline: none; font-family: inherit; background: #fafafa; transition: border-color 0.15s; }
+  .form-group input:focus, .form-group textarea:focus { border-color: #1a1a1a; background: #fff; }
+  .form-group textarea { resize: vertical; min-height: 70px; }
+  .companies-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 5px; max-height: 240px; overflow-y: auto; padding: 10px; border: 1px solid #eee; border-radius: 8px; background: #fafafa; }
+  .company-check { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #444; cursor: pointer; padding: 3px 4px; border-radius: 5px; }
+  .company-check:hover { background: #f3f2ef; }
+  .company-check input[type="checkbox"] { accent-color: #1a1a1a; width: 13px; height: 13px; flex-shrink: 0; }
+  .select-all-row { display: flex; gap: 10px; margin-bottom: 6px; }
+  .select-all-btn { font-size: 12px; color: #1a56cc; background: none; border: none; cursor: pointer; padding: 0; text-decoration: underline; font-family: inherit; }
+  .cv-note { background: #f0f4ff; border: 1px solid #dde5ff; border-radius: 10px; padding: 14px 16px; display: flex; align-items: flex-start; gap: 10px; }
+  .cv-note-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .cv-note-text { font-size: 13px; color: #333; line-height: 1.6; }
+  .cv-note-text a { color: #1a56cc; font-weight: 600; }
+  .submit-btn { background: #1a1a1a; color: #fff; border: none; border-radius: 10px; padding: 12px 24px; font-size: 14px; font-weight: 600; cursor: pointer; align-self: flex-start; transition: background 0.15s; font-family: inherit; }
+  .submit-btn:hover { background: #333; }
+  .form-success-box { display: none; background: #e6f4ee; border: 1px solid #b7dfc7; border-radius: 12px; padding: 2rem; text-align: center; }
+  .form-success-box h3 { font-size: 16px; font-weight: 600; color: #1a6644; margin-bottom: 8px; }
+  .form-success-box p { font-size: 13px; color: #2d7a55; }
+  @media (max-width: 640px) {
+    .apply-section { margin: 2rem 1rem 0; }
+    .form-row { grid-template-columns: 1fr; }
+    .companies-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    header { padding: 1rem 1rem 0.75rem; position: relative; }
+    .header-top { margin-bottom: 0.75rem; }
+    header h1 { font-size: 16px; }
+    header p { font-size: 11px; }
+    .contact-btn { font-size: 11px; padding: 6px 10px; }
+
+    /* Scrollable filter rows */
+    .filter-bar {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      gap: 6px;
+      padding-bottom: 8px;
+      margin-bottom: 0;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .filter-bar::-webkit-scrollbar { display: none; }
+    .filter-btn {
+      white-space: nowrap;
+      flex-shrink: 0;
+      font-size: 11px;
+      padding: 5px 10px;
+    }
+
+    /* Role filter bar scrollable too */
+    .role-filter-bar {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      gap: 6px;
+      padding: 6px 1rem 8px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .role-filter-bar::-webkit-scrollbar { display: none; }
+    .role-filter-btn {
+      white-space: nowrap;
+      flex-shrink: 0;
+      font-size: 11px;
+      padding: 4px 10px;
+    }
+    .role-filter-label { display: none; }
+
+    /* Search bar */
+    .search-wrap { padding: 8px 1rem 0; }
+
+    /* Count bar */
+    .count-bar { padding: 0.5rem 1rem; }
+
+    /* Grid */
+    .grid { grid-template-columns: 1fr; padding: 0 1rem; gap: 10px; }
+
+    /* Subscribe bar */
+    .subscribe-bar { padding: 8px 1rem; }
+    .subscribe-text { font-size: 12px; }
+
+    /* Form */
+    .apply-section { margin: 1.5rem 1rem 0; }
+    .form-row { grid-template-columns: 1fr; }
+    .companies-grid { grid-template-columns: 1fr 1fr; max-height: 200px; }
+  }
+
+</style>
 </head>
 <body>
 <header>
@@ -902,10 +999,11 @@
 <div class="link-row"><span class="link-label">Careers</span><a href="https://hrmos.co/pages/unext/jobs" target="_blank">Career page ↗</a></div></div>
 </div>
 </div>
+
 <div class="apply-section">
 <h2>📩 Express Interest</h2>
-<p>Select the companies and roles you're interested in, attach your CV, and ST will be in touch.</p>
-<form action="https://formspree.io/f/meedqzld" class="apply-form" enctype="multipart/form-data" id="apply-form" method="POST">
+<p class="apply-subtitle">Tell ST which companies and roles interest you — she'll be in touch within 2 business days.</p>
+<form action="https://formspree.io/f/meedqzld" class="apply-form" id="apply-form" method="POST">
 <div class="form-row">
 <div class="form-group">
 <label>Full Name *</label>
@@ -923,7 +1021,7 @@
 </div>
 <div class="form-group">
 <label>Current Job Title</label>
-<input name="current_title" placeholder="e.g. Senior Backend Engineer" type="text"/>
+<input name="title" placeholder="e.g. Senior Backend Engineer" type="text"/>
 </div>
 </div>
 <div class="form-group">
@@ -933,14 +1031,6 @@
 <button class="select-all-btn" onclick="clearAll()" type="button">Clear all</button>
 </div>
 <div class="companies-grid" id="companies-grid">
-<label class="company-check">
-<input name="companies" type="checkbox" value="Nomura Securities 野村證券"/>
-<span>Nomura Securities 野村證券</span>
-</label>
-<label class="company-check">
-<input name="companies" type="checkbox" value="Tofu"/>
-<span>Tofu</span>
-</label>
 <label class="company-check">
 <input name="companies" type="checkbox" value="Cybereason"/>
 <span>Cybereason</span>
@@ -958,8 +1048,20 @@
 <span>KOMOJU (Degica)</span>
 </label>
 <label class="company-check">
+<input name="companies" type="checkbox" value="LINEYahoo (LY Corporation)"/>
+<span>LINEYahoo (LY Corporation)</span>
+</label>
+<label class="company-check">
 <input name="companies" type="checkbox" value="LiNKX"/>
 <span>LiNKX</span>
+</label>
+<label class="company-check">
+<input name="companies" type="checkbox" value="Mercari"/>
+<span>Mercari</span>
+</label>
+<label class="company-check">
+<input name="companies" type="checkbox" value="Nomura Securities 野村證券"/>
+<span>Nomura Securities 野村證券</span>
 </label>
 <label class="company-check">
 <input name="companies" type="checkbox" value="Paidy"/>
@@ -970,12 +1072,20 @@
 <span>PayPay Card</span>
 </label>
 <label class="company-check">
-<input name="companies" type="checkbox" value="Scoville"/>
-<span>Scoville</span>
+<input name="companies" type="checkbox" value="PayPay Securities"/>
+<span>PayPay Securities</span>
+</label>
+<label class="company-check">
+<input name="companies" type="checkbox" value="Tailor"/>
+<span>Tailor</span>
 </label>
 <label class="company-check">
 <input name="companies" type="checkbox" value="THECOO"/>
 <span>THECOO</span>
+</label>
+<label class="company-check">
+<input name="companies" type="checkbox" value="Tofu"/>
+<span>Tofu</span>
 </label>
 <label class="company-check">
 <input name="companies" type="checkbox" value="Tripla"/>
@@ -1002,6 +1112,10 @@
 <span>Flywheel</span>
 </label>
 <label class="company-check">
+<input name="companies" type="checkbox" value="Gen-AX"/>
+<span>Gen-AX</span>
+</label>
+<label class="company-check">
 <input name="companies" type="checkbox" value="Geniee"/>
 <span>Geniee</span>
 </label>
@@ -1010,24 +1124,36 @@
 <span>HRBrain</span>
 </label>
 <label class="company-check">
-<input name="companies" type="checkbox" value="LegalOn Technologies"/>
-<span>LegalOn Technologies</span>
+<input name="companies" type="checkbox" value="KPMG Ignition Tokyo"/>
+<span>KPMG Ignition Tokyo</span>
 </label>
 <label class="company-check">
-<input name="companies" type="checkbox" value="Mercari (Merpay / Mercoin)"/>
-<span>Mercari (Merpay / Mercoin)</span>
+<input name="companies" type="checkbox" value="LegalOn Technologies"/>
+<span>LegalOn Technologies</span>
 </label>
 <label class="company-check">
 <input name="companies" type="checkbox" value="Money Forward"/>
 <span>Money Forward</span>
 </label>
 <label class="company-check">
+<input name="companies" type="checkbox" value="Recruit (Global Promotion Office)"/>
+<span>Recruit (Global Promotion Office)</span>
+</label>
+<label class="company-check">
 <input name="companies" type="checkbox" value="Sansan"/>
 <span>Sansan</span>
 </label>
 <label class="company-check">
+<input name="companies" type="checkbox" value="Scoville"/>
+<span>Scoville</span>
+</label>
+<label class="company-check">
 <input name="companies" type="checkbox" value="SmartHR"/>
 <span>SmartHR</span>
+</label>
+<label class="company-check">
+<input name="companies" type="checkbox" value="Stockmark ストックマーク"/>
+<span>Stockmark ストックマーク</span>
 </label>
 <label class="company-check">
 <input name="companies" type="checkbox" value="Trust Inc."/>
@@ -1041,18 +1167,25 @@
 </div>
 <div class="form-group">
 <label>Message (optional)</label>
-<textarea name="message" placeholder="e.g. preferred role type, availability, any questions for ST..."></textarea>
+<textarea name="message" placeholder="e.g. roles you're most interested in, availability, years of experience, any questions..."></textarea>
 </div>
-<div class="form-group">
-<label>Attach CV *</label>
-<input accept=".pdf,.doc,.docx" name="cv" required="" type="file"/>
+<!-- CV note -->
+<div class="cv-note">
+<span class="cv-note-icon">📎</span>
+<span class="cv-note-text">
+        After submitting, please email your CV to 
+        <a href="mailto:sueting.lim@roberthalf.jp?subject=CV Submission - [Your Name]">sueting.lim@roberthalf.jp</a>
+        with subject line <strong>"CV - [Your Name]"</strong>. ST will match your profile to the roles you selected.
+      </span>
 </div>
 <button class="submit-btn" type="submit">Send to ST →</button>
-</form><div class="form-success" id="form-success" style="display:none">
-      ✅ Thank you! ST will review your CV and be in touch within 2 business days.
-    </div>
+</form>
+<div class="form-success-box" id="form-success">
+<h3>✅ Received! Thank you.</h3>
+<p>ST will review your interest and be in touch within 2 business days.<br/>
+    Don't forget to email your CV to <strong>sueting.lim@roberthalf.jp</strong> with subject <strong>"CV - [Your Name]"</strong>.</p>
 </div>
-<div class="legend">
+</div><div class="legend">
 <span class="legend-item"> Actively hiring — role closing soon, apply now</span>
 <span class="legend-item"> Recently added to this list</span>
 <span class="legend-item"><span style="font-size:11px;">🇯🇵 Japanese required</span> Japanese language needed for this role</span>
@@ -1069,7 +1202,6 @@
   var activeRoleFilter = 'all';
   var activeSearch = '';
 
-  // ── Company filter ──
   function filter(type, btn) {
     document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
     btn.classList.add('active');
@@ -1077,7 +1209,6 @@
     applyFilters();
   }
 
-  // ── Role filter ──
   function filterRole(type, btn) {
     document.querySelectorAll('.role-filter-btn').forEach(function(b) { b.classList.remove('active'); });
     btn.classList.add('active');
@@ -1085,7 +1216,6 @@
     applyFilters();
   }
 
-  // ── Search ──
   function handleSearch(input) {
     activeSearch = input.value.toLowerCase().trim();
     document.getElementById('search-clear').style.display = activeSearch ? 'inline' : 'none';
@@ -1099,7 +1229,6 @@
     applyFilters();
   }
 
-  // ── Apply all filters together ──
   function applyFilters() {
     var cards = document.querySelectorAll('.card');
     var count = 0;
@@ -1121,7 +1250,6 @@
     if (bar) bar.textContent = count + ' compan' + (count === 1 ? 'y' : 'ies') + ' shown';
   }
 
-  // ── Form checkboxes ──
   function selectAll() {
     document.querySelectorAll('#companies-grid input[type="checkbox"]').forEach(function(cb) { cb.checked = true; });
   }
@@ -1130,13 +1258,10 @@
     document.querySelectorAll('#companies-grid input[type="checkbox"]').forEach(function(cb) { cb.checked = false; });
   }
 
-  // ── Form submission ──
   document.addEventListener('DOMContentLoaded', function() {
-    // Hide success div on load
-    var s = document.getElementById('form-success');
-    if (s) s.style.display = 'none';
+    var successDiv = document.getElementById('form-success');
+    if (successDiv) successDiv.style.display = 'none';
 
-    // Handle form submit
     var applyForm = document.getElementById('apply-form');
     if (applyForm) {
       applyForm.onsubmit = function(e) {
@@ -1152,7 +1277,6 @@
         }).then(function(r) {
           if (r.ok) {
             self.style.display = 'none';
-            var successDiv = document.getElementById('form-success');
             if (successDiv) {
               successDiv.style.display = 'block';
               successDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -1160,12 +1284,12 @@
           } else {
             btn.textContent = 'Send to ST →';
             btn.disabled = false;
-            alert('Something went wrong. Please email sueting.lim@roberthalf.jp');
+            alert('Something went wrong. Please email sueting.lim@roberthalf.jp directly.');
           }
         }).catch(function() {
           btn.textContent = 'Send to ST →';
           btn.disabled = false;
-          alert('Something went wrong. Please email sueting.lim@roberthalf.jp');
+          alert('Something went wrong. Please email sueting.lim@roberthalf.jp directly.');
         });
         return false;
       };
